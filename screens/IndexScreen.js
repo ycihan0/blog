@@ -3,12 +3,12 @@ import React, { useContext } from "react";
 import BlogContext from "../context/BlogContext";
 
 export default function IndexScreen() {
-  const { data, addBlogPost } = useContext(BlogContext);
+  const { state, addBlogPost } = useContext(Context);
   return (
     <View>
       <Button title="Ekle" onPress={addBlogPost}/>
       <FlatList
-        data={data}
+        data={state}
         keyExtractor={(blogPost) => blogPost.title}
         renderItem={({ item }) => {
           return <Text>{item.title}</Text>;
