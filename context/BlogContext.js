@@ -21,4 +21,3 @@ export const { Context, Provider } = createDataContext(
   { addBlogPost },
   []
 );
-

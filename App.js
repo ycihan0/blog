@@ -12,7 +12,7 @@ export default function App() {
   return (
     <Provider>
       <NavigationContainer>
-        <Stack.Navigator screenListeners={{ headerTitle: "Blog Uygulaması" }}>
+        <Stack.Navigator screenOptions={{ headerTitle: 'Blog Uygulaması '}}>
           <Stack.Screen name="Index" component={IndexScreen} />
           <Stack.Screen name="Create" component={CreateScreen} />
         </Stack.Navigator>
