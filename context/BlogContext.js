@@ -4,7 +4,7 @@ import createDataContext from './createDataContext';
 const blogReducer = (state, action) => {
   switch (action.type) {
     case 'add_blogpost':
-      return [...state, { title: 'Angular Js' }];
+      return [...state, { title: 'Vue Js' }];
     default:
       return state;
   }
