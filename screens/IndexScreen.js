@@ -16,7 +16,7 @@ export default function IndexScreen({ navigation }) {
   return (
     <View>
       {/* <Text>IndexScreen </Text> */}
-      <Button title="Ekle" onPress={addBlogPost} />
+      {/* <Button title="Ekle" onPress={addBlogPost} /> */}
       <FlatList
         data={state}
         keyExtractor={(blogPost) => blogPost.id}
