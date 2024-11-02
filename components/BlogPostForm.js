@@ -7,9 +7,11 @@ import {
 } from "react-native";
 import React, { useState } from "react";
 
-export default function BlogPostForm({ onsubmit, initialValues }) {
-  const [title, setTitle] = useState(initialValues ? initialValues.title: "");
-  const [content, setContent] = useState(initialValues ? initialValues.content:"");
+export default function BlogPostForm({ onsubmit, initialValues, isEditable }) {
+  const [title, setTitle] = useState(initialValues ? initialValues.title : "");
+  const [content, setContent] = useState(
+    initialValues ? initialValues.content : ""
+  );
 
   return (
     <View style={styles.main}>
@@ -30,7 +32,11 @@ export default function BlogPostForm({ onsubmit, initialValues }) {
         onPress={() => onsubmit(title, content)}
       >
         <View style={styles.buttonView}>
-          <Text style={styles.buttonText}>Kaydet</Text>
+          {isEditable ? (
+            <Text style={styles.buttonText}>Güncelle</Text>
+          ) : (
+            <Text style={styles.buttonText}>Kaydet</Text>
+          )}
         </View>
       </TouchableOpacity>
     </View>
