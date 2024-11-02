@@ -1,5 +1,4 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { TouchableOpacity } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import IndexScreen from "./screens/IndexScreen";
@@ -32,9 +31,13 @@ export default function App() {
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={({ navigation }) => ({
+            options={({ navigation, route }) => ({
               headerRight: () => (
-                <TouchableOpacity onPress={() => navigation.navigate("Edit")}>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.navigate("Edit", { id: route.params.id })
+                  }
+                >
                   <EvilIcons name="pencil" size={35} color="black" />
                 </TouchableOpacity>
               ),
