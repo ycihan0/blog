@@ -4,15 +4,27 @@ import {
   View,
   FlatList,
   Button,
-  Touchable,
   TouchableOpacity,
-} from "react-native";
-import React, { useContext } from "react";
-import { Context } from "../context/BlogContext";
-import Feather from "@expo/vector-icons/Feather";
+} from 'react-native';
+import React, { useContext, useEffect } from 'react';
+import { Context } from '../context/BlogContext';
+import { Feather } from '@expo/vector-icons';
 
 export default function IndexScreen({ navigation }) {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context);
+  const { state, addBlogPost, deleteBlogPost, getBlogPosts } =
+    useContext(Context);
+
+  useEffect(() => {
+    getBlogPosts();
+
+    const listener = navigation.addListener('focus', () => {
+      getBlogPosts();
+    });
+    return () => {
+      listener.remove();
+    };
+  }, []);
+
   return (
     <View>
       {/* <Text>IndexScreen </Text> */}
@@ -22,10 +34,16 @@ export default function IndexScreen({ navigation }) {
         keyExtractor={(blogPost) => blogPost.id}
         renderItem={({ item }) => {
           return (
-            <TouchableOpacity onPress={()=>navigation.navigate("Show",{id:item.id})}>
+            <TouchableOpacity
+              onPress={() => navigation.navigate('Show', { id: item.id })}
+            >
               <View style={styles.row}>
                 <Text style={styles.title}>{item.title}</Text>
-                <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <TouchableOpacity
+                  onPress={() =>
+                    deleteBlogPost(item.id, () => navigation.navigate('Index'))
+                  }
+                >
                   <Feather name="trash" size={24} color="black" />
                 </TouchableOpacity>
               </View>
@@ -39,12 +57,12 @@ export default function IndexScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   row: {
-    flexDirection: "row",
-    justifyContent: "space-between",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     borderTopWidth: 1,
     paddingHorizontal: 10,
     paddingVertical: 20,
-    borderColor: "gray",
+    borderColor: 'gray',
   },
   title: {
     fontSize: 18,
