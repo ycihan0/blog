@@ -19,3 +19,26 @@ Bu proje, React Native ve Expo kullanarak geliştirilmiş bir blog uygulamasıd�
 - Mevcut blog yazılarını düzenleyebilme
 - Blog yazılarını silebilme
 - API ile veri senkronizasyonu
+ ## 📂 Proje Yapısı
+ ```bash
+├── .expo                     # Expo yapılandırma dosyaları
+├── api
+│   └── jsonServer.js         # API isteklerini yapan axios yapılandırması
+├── assets                    # Uygulama varlıkları (görseller, sesler vb.)
+├── components
+│   └── BlogPostForm.js       # Blog yazısı formu bileşeni
+├── context
+│   ├── BlogContext.js        # Blog uygulaması için context yapılandırması
+│   └── createDataContext.js  # Context ve reducer oluşturucu
+├── screens
+│   ├── CreateScreen.js       # Blog yazısı oluşturma ekranı
+│   ├── EditScreen.js         # Blog yazısı düzenleme ekranı
+│   ├── IndexScreen.js        # Blog yazılarının listelendiği ekran
+│   └── ShowScreen.js         # Blog yazısı detay ekranı
+├── App.js                    # Ana uygulama dosyası
+├── app.json                  # Expo uygulama yapılandırması
+├── babel.config.js           # Babel yapılandırması
+├── package.json              # Proje bağımlılıkları ve komutları
+└── .gitignore                # Git tarafından yoksayılan dosyalar
+
+```
